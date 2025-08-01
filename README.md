@@ -4,9 +4,8 @@ A React-based web application with a dynamic theme switcher that allows users to
 
 🔗 Live Demo
 You can view the live deployed version of the project here:
+https://multi-theme-switcher-app-mocha.vercel.app/
 Live Application – Multi Theme Switcher App
-👉 https://multi-theme-switcher-app-mocha.vercel.app/
-
 
 ## 🎨 Features
 
