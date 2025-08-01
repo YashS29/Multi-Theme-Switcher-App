@@ -2,6 +2,10 @@
 
 A React-based web application with a dynamic theme switcher that allows users to select from three distinct themes. Each theme offers a completely different visual experience with unique colors, fonts, layouts, and spacing.
 
+🔗 Live Demo
+You can view the live deployed version of the project here:
+Live Application – Multi Theme Switcher App
+
 ## 🎨 Features
 
 ### Theme System
