@@ -16,6 +16,7 @@ A React-based web application with a dynamic theme switcher that allows users to
 - ✅ **Smooth Animations**: Subtle transitions when switching themes
 - ✅ **TypeScript**: Fully typed for better development experience
 - ✅ **External API**: Fetches product data from FakeStore API
+- ✅ **Interactive Buttons**: Buy Now buttons on all product cards with purchase simulation
 - ✅ **React Router**: Multi-page navigation (Home, About, Contact)
 - ✅ **Styled Components**: Modern CSS-in-JS styling
 - ✅ **Google Fonts**: Dynamic font loading for each theme
@@ -52,13 +53,13 @@ npm start
 src/
 ├── components/
 │   ├── Header.tsx          # Fixed header with theme switcher
-│   └── Card.tsx            # Product card component
+│   └── Card.tsx            # Product card component with Buy Now buttons
 ├── context/
 │   └── ThemeContext.tsx    # Theme management context
 ├── pages/
-│   ├── Home.tsx            # Home page with product grid
+│   ├── Home.tsx            # Home page with product grid and action buttons
 │   ├── About.tsx           # About page
-│   └── Contact.tsx         # Contact page with form
+│   └── Contact.tsx         # Contact page with form and submit button
 ├── themes/
 │   ├── theme1.ts           # Minimalist theme
 │   ├── theme2.ts           # Dark serif theme
@@ -78,18 +79,21 @@ src/
 - **Fonts**: Inter (sans-serif)
 - **Layout**: Clean, simple grid
 - **Spacing**: Compact and organized
+- **Buttons**: Clean blue buttons with hover effects
 
 ### Theme 2 - Dark Serif
 - **Colors**: Dark background with red accents
 - **Fonts**: Playfair Display & Merriweather (serif)
 - **Layout**: Elegant, sophisticated
 - **Spacing**: Generous and luxurious
+- **Buttons**: Dark theme buttons with serif typography
 
 ### Theme 3 - Colorful Playful
 - **Colors**: Vibrant pinks, teals, and oranges
 - **Fonts**: Pacifico & Comic Neue (playful)
 - **Layout**: Dynamic card-based grid
 - **Spacing**: Large and expressive
+- **Buttons**: Colorful buttons with playful fonts
 
 ## 🔧 Available Scripts
 
@@ -104,8 +108,9 @@ src/
 - **TypeScript** - Type safety
 - **Styled Components** - CSS-in-JS styling
 - **React Router** - Client-side routing
-- **FakeStore API** - Product data
+- **FakeStore API** - Product data with interactive buttons
 - **Google Fonts** - Typography
+- **Local Storage** - Theme persistence
 
 ## 📱 Responsive Design
 
@@ -130,6 +135,21 @@ To add a new theme:
 2. Define the theme object following the Theme interface
 3. Export it from `src/themes/index.ts`
 4. Add it to the dropdown in `src/components/Header.tsx`
+
+## 🛒 Interactive Features
+
+### Product Cards
+- **Buy Now Buttons**: Each product card features an interactive "Buy Now" button
+- **Purchase Simulation**: Clicking the button simulates a purchase process with loading states
+- **Success Feedback**: Users receive confirmation alerts after successful "purchases"
+- **Responsive Design**: Buttons adapt to different screen sizes and themes
+- **Theme Integration**: Button styling changes with theme switching
+
+### Button Types
+- **Product Buy Buttons**: On each product card with purchase simulation
+- **Action Buttons**: On the home page for theme exploration
+- **Form Submit Buttons**: On the contact page for form submission
+- **Mobile Menu Buttons**: In the header for mobile navigation
 
 ## 📄 License
 

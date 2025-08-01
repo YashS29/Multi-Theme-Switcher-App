@@ -146,6 +146,43 @@ const ErrorMessage = styled.div<{ theme: any }>`
   }
 `;
 
+const ActionButton = styled.button<{ theme: any }>`
+  background: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.surface};
+  border: none;
+  padding: ${({ theme }) => `${theme.spacing.md} ${theme.spacing.xl}`};
+  border-radius: ${({ theme }) => theme.layout.borderRadius};
+  font-family: ${({ theme }) => theme.fonts.primary};
+  font-size: ${({ theme }) => theme.fonts.sizes.medium};
+  font-weight: bold;
+  cursor: pointer;
+  transition: ${({ theme }) => theme.animation.transition};
+  margin: ${({ theme }) => theme.spacing.lg} auto;
+  display: block;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.lg}`};
+    font-size: ${({ theme }) => theme.fonts.sizes.small};
+    margin: ${({ theme }) => theme.spacing.md} auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
+    font-size: ${({ theme }) => theme.fonts.sizes.small};
+    margin: ${({ theme }) => theme.spacing.sm} auto;
+  }
+`;
+
 const Home: React.FC = () => {
   const { currentTheme } = useTheme();
   const [products, setProducts] = useState<Product[]>([]);
@@ -227,6 +264,14 @@ const Home: React.FC = () => {
           Discover amazing products with our beautiful theme switcher. 
           Each theme offers a unique experience with different colors, fonts, and layouts.
         </PageDescription>
+        
+        <ActionButton 
+          theme={currentTheme}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          🎨 Explore More Themes
+        </ActionButton>
+        
         <ProductGrid theme={currentTheme}>
           {memoizedProducts}
         </ProductGrid>

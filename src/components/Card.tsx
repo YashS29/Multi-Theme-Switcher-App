@@ -127,7 +127,7 @@ const ProductDescription = styled.p<{ theme: any }>`
   font-size: ${({ theme }) => theme.fonts.sizes.small};
   color: ${({ theme }) => theme.colors.textSecondary};
   line-height: 1.5;
-  margin: 0;
+  margin: 0 0 ${({ theme }) => theme.spacing.sm} 0;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -137,15 +137,72 @@ const ProductDescription = styled.p<{ theme: any }>`
   @media (max-width: 768px) {
     font-size: ${({ theme }) => theme.fonts.sizes.small};
     -webkit-line-clamp: 2;
+    margin-bottom: ${({ theme }) => theme.spacing.xs};
   }
 
   @media (max-width: 480px) {
     font-size: ${({ theme }) => theme.fonts.sizes.small};
     -webkit-line-clamp: 2;
+    margin-bottom: ${({ theme }) => theme.spacing.xs};
+  }
+`;
+
+const BuyButton = styled.button<{ theme: any }>`
+  background: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.surface};
+  border: none;
+  padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
+  border-radius: ${({ theme }) => theme.layout.borderRadius};
+  font-family: ${({ theme }) => theme.fonts.primary};
+  font-size: ${({ theme }) => theme.fonts.sizes.small};
+  font-weight: bold;
+  cursor: pointer;
+  transition: ${({ theme }) => theme.animation.transition};
+  width: 100%;
+  margin-top: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
+    font-size: ${({ theme }) => theme.fonts.sizes.small};
+  }
+
+  @media (max-width: 480px) {
+    padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
+    font-size: ${({ theme }) => theme.fonts.sizes.small};
   }
 `;
 
 const Card: React.FC<CardProps> = React.memo(({ product, theme }) => {
+  const [isBuying, setIsBuying] = React.useState(false);
+
+  const handleBuyClick = () => {
+    setIsBuying(true);
+    
+    // Simulate purchase process
+    setTimeout(() => {
+      alert(`🎉 Successfully purchased: ${product.title} for $${product.price}!`);
+      setIsBuying(false);
+    }, 1500);
+  };
+
   return (
     <CardContainer theme={theme}>
       <ProductImage src={product.image} alt={product.title} theme={theme} />
@@ -153,6 +210,13 @@ const Card: React.FC<CardProps> = React.memo(({ product, theme }) => {
       <ProductTitle theme={theme}>{product.title}</ProductTitle>
       <ProductPrice theme={theme}>${product.price}</ProductPrice>
       <ProductDescription theme={theme}>{product.description}</ProductDescription>
+      <BuyButton 
+        theme={theme} 
+        onClick={handleBuyClick}
+        disabled={isBuying}
+      >
+        {isBuying ? '🛒 Processing...' : '🛒 Buy Now'}
+      </BuyButton>
     </CardContainer>
   );
 });
